@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
   		# Log the user in and 
   		log_in user
       # remember user token to allow session persistence upon browser closing
-      remember user
+      # remember user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
   		# redirect to user's show page
   		redirect_to user
   	else
