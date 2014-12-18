@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:session][:password])
   		# Log the user in and 
   		log_in user
+      # remember user token to allow session persistence upon browser closing
+      remember user
   		# redirect to user's show page
   		redirect_to user
   	else
