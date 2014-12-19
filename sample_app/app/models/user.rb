@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 
+# METHODS FOR REMEMBER USER
+
 	class << self
 	# Returns the hash digest of the given string.
 		# def self.digest
