@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       # remember user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
   		# redirect to user's show page
-  		redirect_to user
+  		redirect_back_or user
   	else
   		# Create an error message
   		# the method 'now' avoids the persistance of the message
