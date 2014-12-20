@@ -2,6 +2,7 @@ jorge:
  name: Jorge Polanco
  email: drjorgepolanco@mail.com
  password_digest: <%= User.digest('password') %>
+ admin: true
 
 triculito:
  name: Julito Triculi
