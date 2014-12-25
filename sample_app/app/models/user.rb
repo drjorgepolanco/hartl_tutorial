@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 										uniqueness: { case_sensitive: false }
 	has_secure_password												 # allows edit without password ->
 	validates :password, length: { minimum: 6 }, allow_blank: true # <- <- <- <-
+	default_scope -> { order('created_at DESC') }
 
 # METHODS FOR REMEMBER USER
 
