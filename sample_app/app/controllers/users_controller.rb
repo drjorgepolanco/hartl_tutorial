@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    if @user.activated == false
+      flash[:danger] = "This user has not activated his account"
+      redirect_to root_url
+    end
+    # redirect_to root_url and return unless @user.activated == true
   end
 
   def index
