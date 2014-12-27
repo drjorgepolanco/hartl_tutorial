@@ -83,6 +83,7 @@ class UserTest < ActiveSupport::TestCase
 		assert_not jorge.following?(triculito)
 		jorge.follow(triculito)
 		assert jorge.following?(triculito)
+		assert triculito.followers.include?(jorge)
 		jorge.unfollow(triculito)
 		assert_not jorge.following?(triculito)
 	end
