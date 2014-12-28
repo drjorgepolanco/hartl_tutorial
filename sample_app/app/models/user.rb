@@ -92,7 +92,8 @@ class User < ActiveRecord::Base
 	
 	# Defines a proto-feed
 	def feed
-		Micropost.where("user_id = ?", id)
+		# Micropost.where("user_id = ?", id)
+		Micropost.where("user_id in (?) OR user_id = ?", following_ids, id)
 	end
 
 # METHODS FOR SOCIAL LAYER
