@@ -92,8 +92,22 @@ class User < ActiveRecord::Base
 	
 	# Defines a proto-feed
 	def feed
+		# # Only shows the user's microposts
 		# Micropost.where("user_id = ?", id)
-		Micropost.where("user_id in (?) OR user_id = ?", following_ids, id)
+
+		# # Shows the followeds and self microposts but does not scale well
+		# # because it pulls out all the ids from the db to find the needed ones
+		# Micropost.where("user_id in (?) OR user_id = ?", following_ids, id)
+
+		# # Better way. Ruby way.
+		# Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
+		# 								following_ids: following_ids, user_id: user)
+
+		# Best way. SQL way.
+		following_ids = "SELECT followed_id FROM relationships
+										 WHERE 	follower_id = :user_id"
+		Micropost.where("user_id IN (#{following_ids})
+										OR user_id = :user_id", user_id: id)
 	end
 
 # METHODS FOR SOCIAL LAYER
