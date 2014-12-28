@@ -1,1 +1,16 @@
+one:
+  follower: jorge
+  followed: triculito
+
+two:
+  follower: jorge
+  followed: lana
+
+three:
+  follower: lana
+  followed: jorge
+
+four:
+  follower: triculito
+  followed: jorge
 
