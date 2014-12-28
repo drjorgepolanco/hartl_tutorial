@@ -1,10 +1,10 @@
 one:
   follower: jorge
-  followed: triculito
+  followed: lana
 
 two:
   follower: jorge
-  followed: lana
+  followed: mallory
 
 three:
   follower: lana
