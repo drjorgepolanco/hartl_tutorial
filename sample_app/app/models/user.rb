@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }, allow_blank: true # <- <- <- <-
 	# default_scope -> { order(created_at: :desc) }
 
+
 # METHODS FOR REMEMBER USER
 
 	class << self
@@ -56,6 +57,7 @@ class User < ActiveRecord::Base
 		update_attribute(:remember_digest, nil)
 	end
 
+
 # METHODS FOR USER ACTIVATION
 
 	# Activates an account
@@ -68,6 +70,7 @@ class User < ActiveRecord::Base
 	def send_activation_email
 		UserMailer.account_activation(self).deliver_now
 	end
+
 
 # METHODS FOR RESET TOKEN
 
@@ -87,6 +90,7 @@ class User < ActiveRecord::Base
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
 	end
+
 
 # METHOD FOR MICROPOSTS FEED
 	
@@ -109,6 +113,7 @@ class User < ActiveRecord::Base
 		Micropost.where("user_id IN (#{following_ids})
 										OR user_id = :user_id", user_id: id)
 	end
+
 
 # METHODS FOR SOCIAL LAYER
 	
